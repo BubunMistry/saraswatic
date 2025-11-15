@@ -1,68 +1,322 @@
 // lib/gallery-data.ts
 
 export interface GalleryItem {
-    id: number
-    year: number
-    title: string
-    image: string
-  }
+  id: number
+  year: number
+  title: string
+  media: string
+  type: 'image' | 'video'
+  description: string
+}
+
+export const galleryData: GalleryItem[] = [
+  // 2026 Media
+  { 
+    id: 1, 
+    year: 2026, 
+    title: "Morning Ceremony", 
+    media: "/images/2026/collage-saraswatipuja-2026-1.webp", 
+    type: 'image',
+    description: "Beautiful morning rituals and prayers"
+  },
+  { 
+    id: 2, 
+    year: 2026, 
+    title: "Cultural Highlights", 
+    media: "/videos/2026/collage-saraswatipuja-2026-highlights.mp4", 
+    type: 'video',
+    description: "Complete celebration highlights and performances"
+  },
+  { 
+    id: 3, 
+    year: 2026, 
+    title: "Prayer Session", 
+    media: "/images/2026/collage-saraswatipuja-2026-2.webp", 
+    type: 'image',
+    description: "Devotees engaged in traditional prayers"
+  },
+
+  // 2025 Media
+  { 
+    id: 4, 
+    year: 2025, 
+    title: "Worship Ceremony", 
+    media: "/images/2025/collage-saraswatipuja-2025-1.webp", 
+    type: 'image',
+    description: "Traditional worship ceremony moments"
+  },
+  { 
+    id: 5, 
+    year: 2025, 
+    title: "Festival Celebration", 
+    media: "/videos/2025/collage-saraswatipuja-2025-celebration.mp4", 
+    type: 'video',
+    description: "Full festival celebration and cultural events"
+  },
+  { 
+    id: 6, 
+    year: 2025, 
+    title: "Music Performance", 
+    media: "/images/2025/collage-saraswatipuja-2025-3.webp", 
+    type: 'image',
+    description: "Traditional music and dance performances"
+  },
+
+  // 2024 Media
+  { 
+    id: 1181, 
+    year: 2024, 
+    title: "Puja Preparation", 
+    media: "/images/2024/collage-saraswatipuja-2024-preparation.webp", 
+    type: 'image',
+    description: "Morning preparations and decoration work"
+  },
   
-  export const galleryData: GalleryItem[] = [
-    // 2026 Images
-    { id: 1, year: 2026, title: "Morning Ceremony", image: "/images/2026/collage-saraswatipuja-2026-1.webp" },
-    { id: 2, year: 2026, title: "Prayer Session", image: "/images/2026/collage-saraswatipuja-2026-2.webp" },
-    { id: 3, year: 2026, title: "Cultural Program", image: "/images/2026/collage-saraswatipuja-2026-3.webp" },
-    { id: 4, year: 2026, title: "Student Performance", image: "/images/2026/collage-saraswatipuja-2026-4.webp" },
-    { id: 5, year: 2026, title: "Celebration Moments", image: "/images/2026/collage-saraswatipuja-2026-5.webp" },
+  { 
+    id: 1182, 
+    year: 2024, 
+    title: "Puja Preparation", 
+    media: "/images/2024/collage-saraswatipuja-2024.webp", 
+    type: 'image',
+    description: "Morning preparations and decoration work"
+  },
   
-    // 2025 Images
-    { id: 6, year: 2025, title: "Worship Ceremony", image: "/images/2025/collage-saraswatipuja-2025-1.webp" },
-    { id: 7, year: 2025, title: "Traditional Rituals", image: "/images/2025/collage-saraswatipuja-2025-2.webp" },
-    { id: 8, year: 2025, title: "Music Performance", image: "/images/2025/collage-saraswatipuja-2025-3.webp" },
-    { id: 9, year: 2025, title: "Community Gathering", image: "/images/2025/collage-saraswatipuja-2025-4.webp" },
-    { id: 10, year: 2025, title: "Festival Decorations", image: "/images/2025/collage-saraswatipuja-2025-5.webp" },
+  { 
+    id: 1011, 
+    year: 2024, 
+    title: "Pushpanjali Ceremony", 
+    media: "/images/2024/collage-saraswatipuja-2024-pushpanjali.webp", 
+    type: 'image',
+    description: "Devotees offering flowers during the Pushpanjali ritual"
+  },
   
-    // 2024 Images
-    { id: 11, year: 2024, title: "Event 2024", image: "/images/2024/collage-saraswatipuja-2024-1.webp" },
-    { id: 12, year: 2024, title: "Morning Prayers", image: "/images/2024/collage-saraswatipuja-2024-2.webp" },
-    { id: 13, year: 2024, title: "Cultural Events", image: "/images/2024/collage-saraswatipuja-2024-3.webp" },
-    { id: 14, year: 2024, title: "Student Participation", image: "/images/2024/collage-saraswatipuja-2024-4.webp" },
-    { id: 15, year: 2024, title: "Festival Highlights", image: "/images/2024/collage-saraswatipuja-2024-5.webp" },
+  { 
+    id: 1111, 
+    year: 2024, 
+    title: "Kids Talent Show", 
+    media: "/videos/2024/collage-saraswatipuja-2024.mp4", 
+    type: 'video',
+    description: "Kids performing songs and recitations on stage"
+  },
   
-    // 2023 Images
-    { id: 16, year: 2023, title: "Ceremony Ritual", image: "/images/2023/collage-saraswatipuja-2023-1.webp" },
-    { id: 17, year: 2023, title: "Traditional Worship", image: "/images/2023/collage-saraswatipuja-2023-2.webp" },
-    { id: 18, year: 2023, title: "Musical Evening", image: "/images/2023/collage-saraswatipuja-2023-3.webp" },
-    { id: 19, year: 2023, title: "Community Feast", image: "/images/2023/collage-saraswatipuja-2023-4.webp" },
-    { id: 20, year: 2023, title: "Cultural Performances", image: "/images/2023/collage-saraswatipuja-2023-5.webp" },
+  { 
+    id: 1211, 
+    year: 2024, 
+    title: "Evening Aarti", 
+    media: "/images/2024/collage-saraswatipuja-2024-aarti.webp", 
+    type: 'image',
+    description: "Beautiful evening aarti performed with diya lights"
+  },
   
-    // 2022 Images
-    { id: 21, year: 2022, title: "Stage Performance", image: "/images/2022/collage-saraswatipuja-2022.webp" },
-    { id: 22, year: 2022, title: "Prayer Gathering", image: "/images/2022/collage-saraswatipuja-2022 (2).webp" },
-    { id: 23, year: 2022, title: "Traditional Dance", image: "/images/2022/collage-saraswatipuja-2022 (3).webp" },
-    { id: 24, year: 2022, title: "Festival Decor", image: "/images/2022/collage-saraswatipuja-2022 (4).webp" },
-    { id: 25, year: 2022, title: "Community Celebration", image: "/images/2022/collage-saraswatipuja-2022 (5).webp" },
+  { 
+    id: 113, 
+    year: 2024, 
+    title: "Community Group Photo", 
+    media: "/images/2024/collage-saraswatipuja-2024-group.webp", 
+    type: 'image',
+    description: "Everyone gathered for the final group photograph"
+  },
   
-    // 2021 Images
-    { id: 26, year: 2021, title: "Cultural Program", image: "/images/2021/collage-saraswatipuja-2021-1.webp" },
-    { id: 27, year: 2021, title: "Music Performance", image: "/images/2021/collage-saraswatipuja-2021-2.webp" },
-    { id: 28, year: 2021, title: "Traditional Ceremony", image: "/images/2021/collage-saraswatipuja-2021-3.webp" },
-    { id: 29, year: 2021, title: "Student Activities", image: "/images/2021/collage-saraswatipuja-2021-4.webp" },
-    { id: 30, year: 2021, title: "Festival Moments", image: "/images/2021/collage-saraswatipuja-2021-5.webp" },
+
+
+  // 2023 Media
+  { 
+    id: 9, 
+    year: 2023, 
+    title: "Cultural Events", 
+    media: "/videos/2023/Saraswati Pujo 2023 - TAMAL ADAK (1080p, h264).mp4", 
+    type: 'video',
+    description: "Cultural programs and performances"
+  },
+  { 
+    id: 102023, 
+    year: 2023, 
+    title: "Traditional Worship", 
+    media: "/images/2023/main-2023.webp", 
+    type: 'image',
+    description: "Traditional worship rituals"
+  },
+  { 
+    id: 112023, 
+    year: 2023, 
+    title: "Traditional Worship", 
+    media: "/images/2023/collage-saraswatipuja-2023 (2).webp", 
+    type: 'image',
+    description: "Traditional worship rituals"
+  },
+  { 
+    id: 122023, 
+    year: 2023, 
+    title: "Traditional Worship", 
+    media: "/images/2023/closeup-2023.webp", 
+    type: 'image',
+    description: "Traditional worship rituals"
+  },
+  { 
+    id: 132023, 
+    year: 2023, 
+    title: "Traditional Worship", 
+    media: "/images/2023/group-2023.webp", 
+    type: 'image',
+    description: "Traditional worship rituals"
+  },
+  { 
+    id: 142023, 
+    year: 2023, 
+    title: "Traditional Worship", 
+    media: "/images/2023/2023-collage.webp", 
+    type: 'image',
+    description: "Traditional worship rituals"
+  },
+
+  // 2022 Media
+  { 
+    id: 2022, 
+    year: 2022, 
+    title: "Celebration Video", 
+    media: "/videos/2022/Saraswati Pujo 2022 - TAMAL ADAK (1080p, h264).mp4", 
+    type: 'video',
+    description: "Complete celebration video"
+  },
+  {
+    id: 201,
+    year: 2022,
+    title: "Saraswati Idol – Closeup",
+    media: "/images/2022/collage-saraswatipuja-2022 (3).webp",
+    type: "image",
+    description: "Beautiful closeup of Goddess Saraswati idol."
+  },
   
-    // 2020 Images
-    { id: 31, year: 2020, title: "Worship Event", image: "/images/2020/collage-saraswatipuja-2020-1.webp" },
-    { id: 32, year: 2020, title: "Celebration", image: "/images/2020/collage-saraswatipuja-2020-2.webp" },
-    { id: 33, year: 2020, title: "Cultural Gathering", image: "/images/2020/collage-saraswatipuja-2020-3.webp" },
-    { id: 34, year: 2020, title: "Traditional Music", image: "/images/2020/collage-saraswatipuja-2020-4.webp" },
-    { id: 35, year: 2020, title: "Community Event", image: "/images/2020/collage-saraswatipuja-2020-5.webp" },
   
-    // 2019 Images
-    { id: 36, year: 2019, title: "Morning Ceremony", image: "/images/2019/collage-saraswatipuja-2019-1.webp" },
-    { id: 37, year: 2019, title: "Prayer Session", image: "/images/2019/collage-saraswatipuja-2019-2.webp" },
-    { id: 38, year: 2019, title: "First Celebration", image: "/images/2019/collage-saraswatipuja-2019-3.webp" },
-    { id: 39, year: 2019, title: "Traditional Rituals", image: "/images/2019/collage-saraswatipuja-2019-4.webp" },
-    { id: 40, year: 2019, title: "Founding Year", image: "/images/2019/collage-saraswatipuja-2019-5.webp" },
-  ]
+  {
+    id: 203,
+    year: 2022,
+    title: "Puja Moment",
+    media: "/images/2022/collage-saraswatipuja-2022 (4).webp",
+    type: "image",
+    description: "Traditional rituals captured during Saraswati Puja."
+  },
   
-  export const years = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
+  {
+    id: 204,
+    year: 2022,
+    title: "Cultural Performance",
+    media: "/images/2022/collage-saraswatipuja-2022 (5).webp",
+    type: "image",
+    description: "Stage performance by Collage family members."
+  },
+  
+  {
+    id: 205,
+    year: 2022,
+    title: "Offering Prayers",
+    media: "/images/2022/collage-saraswatipuja-2022 (6).webp",
+    type: "image",
+    description: "Devotional prayer moments of Saraswati Puja."
+  },
+  
+  {
+    id: 206,
+    year: 2022,
+    title: "Stage Performance – Full View",
+    media: "/images/2022/collage-saraswatipuja-2022.webp",
+    type: "image",
+    description: "Wide shot of stage and lighting setup."
+  },
+  
+  // 2021 Media
+  { 
+    id: 12021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/2021-main.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 122021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/2021-side-view.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 132021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/full-2021.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 142021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/2021-chin.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 152021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/tamal-2021.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 162021, 
+    year: 2021, 
+    title: "Cultural Program", 
+    media: "/images/2021/2021-closeup.webp", 
+    type: 'image',
+    description: "Cultural program highlights"
+  },
+  { 
+    id: 172021, 
+    year: 2021, 
+    title: "Celebration Video", 
+    media: "/videos/2021/Saraswati Pujo 2021 - TAMAL ADAK (1080p, h264).mp4", 
+    type: 'video',
+    description: "Complete celebration video"
+  },
+
+  // 2020 Media
+  { 
+    id: 15, 
+    year: 2020, 
+    title: "Worship Event", 
+    media: "/images/2020/collage-saraswatipuja-2020-1.webp", 
+    type: 'image',
+    description: "Traditional worship event"
+  },
+  { 
+    id: 16, 
+    year: 2020, 
+    title: "Festival Recap", 
+    media: "/videos/2020/Saraswati Pujo 2020 - TAMAL ADAK (360p, h264).mp4", 
+    type: 'video',
+    description: "Festival recap and highlights"
+  },
+
+  // 2019 Media
+  { 
+    id: 17, 
+    year: 2019, 
+    title: "First Celebration", 
+    media: "/images/2019/collage-saraswatipuja-2019-3.webp", 
+    type: 'image',
+    description: "Our first Saraswati Puja celebration"
+  },
+  { 
+    id: 18, 
+    year: 2019, 
+    title: "Founding Year", 
+    media: "/videos/2019/collage-saraswatipuja-2019-founding.mp4", 
+    type: 'video',
+    description: "Memories from our founding year"
+  },
+]
+
+export const years = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]

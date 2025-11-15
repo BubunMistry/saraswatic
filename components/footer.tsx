@@ -34,6 +34,11 @@ export function Footer() {
           label: "collagesaraswatiofficial@gmail.com",
           icon: Mail
         },
+        {
+          href: "mailto:tamal.d3440@gmail.com",
+          label: "tamal.d3440@gmail.com",
+          icon: Mail
+        },
       ]
     }
   ]
@@ -195,28 +200,38 @@ export function Footer() {
               ))}
             </motion.div>
 
-            {/* Bottom Bar */}
+            {/* Bottom Bar - Only this section modified */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
               className="border-t border-white/20 pt-8"
             >
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <div className="flex items-center space-x-2 text-sm text-gray-400">
-                  <span>© {new Date().getFullYear()} Saraswati Puja Celebration</span>
-                  <div className="w-1 h-1 bg-gray-600 rounded-full" />
+              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
+                {/* Copyright - Made responsive */}
+                <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-gray-400">
+                  <span>© 2025 Saraswati Puja Celebration</span>
+                  <div className="hidden sm:block w-1 h-1 bg-gray-600 rounded-full" />
                   <span>All rights reserved</span>
                 </div>
 
+                {/* Made with love - Improved layout */}
                 <motion.div
-                  className="flex items-center space-x-2 text-sm text-gray-400"
+                  className="flex items-center justify-center space-x-2 text-sm text-gray-400"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 5 }}
                 >
                   <span>Made with</span>
-                  <Heart size={14} className="text-white" />
-                  <span>for divine knowledge and arts</span>
+                  <Heart size={14} className="text-red-400 fill-red-400" />
+                  <span>by</span>
+                  <a 
+                    href="https://www.fusiondev.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors font-medium underline"
+                  >
+                    @Fusion Dev
+                  </a>
                 </motion.div>
               </div>
             </motion.div>

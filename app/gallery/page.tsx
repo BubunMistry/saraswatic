@@ -4,32 +4,34 @@ import { useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ModalGallery } from "@/components/modal-gallery"
-import { Calendar, Image as ImageIcon, Filter, ChevronRight, Search, BarChart3, Inbox, ChevronDown } from "lucide-react"
+import { Calendar, Image as ImageIcon, Filter, ChevronRight, Search, BarChart3, Inbox, ChevronDown, Play, Video } from "lucide-react"
 import { galleryData, years } from "@/lib/gallery-data"
 
 export default function Gallery() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0)
   const [showMobileFilter, setShowMobileFilter] = useState(false)
 
   const filteredGallery = selectedYear ? galleryData.filter((item) => item.year === selectedYear) : galleryData
 
   const openModal = (index: number) => {
-    setCurrentImageIndex(index)
+    console.log("Opening modal with index:", index, "Media:", filteredGallery[index])
+    setCurrentMediaIndex(index)
     setIsModalOpen(true)
   }
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % filteredGallery.length)
+  const nextMedia = () => {
+    setCurrentMediaIndex((prev) => (prev + 1) % filteredGallery.length)
   }
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + filteredGallery.length) % filteredGallery.length)
+  const prevMedia = () => {
+    setCurrentMediaIndex((prev) => (prev - 1 + filteredGallery.length) % filteredGallery.length)
   }
 
   const handleThumbnailClick = (index: number) => {
-    setCurrentImageIndex(index)
+    console.log("Thumbnail clicked:", index)
+    setCurrentMediaIndex(index)
   }
 
   return (
@@ -150,25 +152,70 @@ export default function Gallery() {
                     onClick={() => openModal(idx)}
                     className="group cursor-pointer bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
                   >
-                    {/* Image Container */}
+                    {/* Media Container */}
                     <div className="relative h-64 md:h-80 bg-gray-100 overflow-hidden">
-                      <img
-                        src={item.image || "/placeholder.jpg"}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                          <div className="bg-white/90 backdrop-blur-sm p-3 md:p-4 rounded-full border border-gray-200">
-                            <Search className="w-5 h-5 md:w-6 md:h-6 text-black" />
+                      {item.type === 'video' ? (
+                        // Video Thumbnail
+                        <div className="relative w-full h-full">
+                          <video
+                            className="w-full h-full object-cover"
+                            muted
+                            preload="metadata"
+                          >
+                            <source src={item.media} type="video/mp4" />
+                          </video>
+                          {/* Video Play Overlay */}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-80 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                              <div className="bg-white/90 backdrop-blur-sm p-3 md:p-4 rounded-full border border-gray-200">
+                                <Play className="w-5 h-5 md:w-6 md:h-6 text-black fill-black" />
+                              </div>
+                            </div>
+                          </div>
+                          {/* Video Badge */}
+                          <div className="absolute top-3 left-3 bg-black/80 text-white px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1">
+                            <Video className="w-3 h-3" />
+                            Video
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        // Image Thumbnail
+                        <>
+                          <img
+                            src={item.media || "/placeholder.jpg"}
+                            alt={item.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          
+                          {/* Image Overlay */}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                              <div className="bg-white/90 backdrop-blur-sm p-3 md:p-4 rounded-full border border-gray-200">
+                                <Search className="w-5 h-5 md:w-6 md:h-6 text-black" />
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </div>
 
-               
+                    {/* Content */}
+                    <div className="p-4 md:p-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-600 bg-gray-100 px-2 py-1 rounded-md">
+                          {item.year}
+                        </span>
+                        {item.type === 'video' && (
+                          <Video className="w-4 h-4 text-gray-400" />
+                        )}
+                      </div>
+                      <h3 className="font-semibold text-black text-lg mb-2 line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -178,8 +225,8 @@ export default function Gallery() {
                       <Inbox className="w-12 h-12 text-gray-400" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-black mb-2">No images found</h3>
-                  <p className="text-gray-600">Try selecting a different year or check back later for new photos.</p>
+                  <h3 className="text-xl font-semibold text-black mb-2">No media found</h3>
+                  <p className="text-gray-600">Try selecting a different year or check back later for new content.</p>
                 </div>
               )}
             </div>
@@ -190,7 +237,7 @@ export default function Gallery() {
                 <BarChart3 className="w-5 h-5" />
                 <span>
                   Showing <span className="font-bold text-black">{filteredGallery.length}</span> of{" "}
-                  <span className="font-bold text-black">{galleryData.length}</span> images
+                  <span className="font-bold text-black">{galleryData.length}</span> media items
                 </span>
               </div>
             </div>
@@ -201,15 +248,17 @@ export default function Gallery() {
       <Footer />
 
       {/* Modal Gallery */}
-      <ModalGallery
-        isOpen={isModalOpen}
-        images={filteredGallery.map((item) => item.image)}
-        currentIndex={currentImageIndex}
-        onClose={() => setIsModalOpen(false)}
-        onNext={nextImage}
-        onPrev={prevImage}
-        onImageSelect={handleThumbnailClick}
-      />
+      {isModalOpen && (
+        <ModalGallery
+          isOpen={isModalOpen}
+          images={filteredGallery}
+          currentIndex={currentMediaIndex}
+          onClose={() => setIsModalOpen(false)}
+          onNext={nextMedia}
+          onPrev={prevMedia}
+          onImageSelect={handleThumbnailClick}
+        />
+      )}
     </div>
   )
 }

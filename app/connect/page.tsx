@@ -83,11 +83,11 @@ export default function Connect() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-gray-700">
                       <Phone className="w-5 h-5 text-black" />
-                      <span>+91 98765 43210</span>
+                      <span>+91 98048 76362</span>
                     </div>
                     <div className="flex items-center gap-3 text-gray-700">
                       <Mail className="w-5 h-5 text-black" />
-                      <span>contact@collagepuja.com</span>
+                      <span>tamal.d3440@gmail.com / collagesaraswatiofficial@gmail.com</span>
                     </div>
                     <div className="flex items-center gap-3 text-gray-700">
                       <Clock className="w-5 h-5 text-black" />
@@ -138,6 +138,7 @@ export default function Connect() {
 
               {/* Contact Form & Map - Right Side */}
               <div className="lg:col-span-3 space-y-8">
+
                 {/* Contact Form */}
                 <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center gap-4 mb-8">
@@ -158,6 +159,7 @@ export default function Connect() {
                   )}
 
                   <form onSubmit={handleSubmit} className="space-y-6">
+
                     <div>
                       <label className="block text-black font-semibold mb-3">Full Name</label>
                       <input
@@ -166,7 +168,8 @@ export default function Connect() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-black transition-colors duration-300"
+                        className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl 
+          focus:outline-none focus:border-black transition-colors duration-300"
                         placeholder="Your full name"
                       />
                     </div>
@@ -180,10 +183,12 @@ export default function Connect() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-black transition-colors duration-300"
+                          className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl 
+            focus:outline-none focus:border-black transition-colors duration-300"
                           placeholder="your@email.com"
                         />
                       </div>
+
                       <div>
                         <label className="block text-black font-semibold mb-3">Phone (Optional)</label>
                         <input
@@ -191,7 +196,8 @@ export default function Connect() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-black transition-colors duration-300"
+                          className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl 
+            focus:outline-none focus:border-black transition-colors duration-300"
                           placeholder="+91 XXXXX XXXXX"
                         />
                       </div>
@@ -205,22 +211,25 @@ export default function Connect() {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-black transition-colors duration-300 resize-none"
+                        className="w-full px-5 py-3 bg-white text-black border-2 border-gray-300 rounded-xl 
+          focus:outline-none focus:border-black transition-colors duration-300 resize-none"
                         placeholder="Tell us about your inquiry or how you'd like to be involved..."
                       />
                     </div>
 
-                    <div className="pt-4">
-                      <button
+                    {/* FIXED FULL-WIDTH CUSTOM BUTTON */}
+                    <div className=" text-center">
+                      <CustomButton
                         type="submit"
-                        className="w-full button" // Using your custom button class
+                        variant="default"
+                        size="sm"
+                        className=" items-center justify-center gap-2"
                       >
-                        <span className="inner flex items-center justify-center gap-2">
-                          Send Message
-                          <Send className="w-4 h-4" />
-                        </span>
-                      </button>
+                        Send Message
+                        <Send className="w-4 h-4" />
+                      </CustomButton>
                     </div>
+
                   </form>
                 </div>
 
@@ -232,28 +241,24 @@ export default function Connect() {
                     </div>
                     <h3 className="text-2xl font-bold text-black">Find Our Location</h3>
                   </div>
-                  
+
                   <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-80">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.857332172157!2d88.31074227599706!3d22.51194437953259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270c3eac8b78d%3A0xaf10b7c6494e8c3e!2s103%2C%20Tripura%20Roy%20Ln%2C%20Salkia%2C%20Howrah%2C%20West%20Bengal%20711106!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Collage Family Saraswati Puja Location"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d516.7600852471369!2d88.34463225390846!3d22.59956622272832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277000846780b%3A0x712fff88310a98f4!2sHome!5e0!3m2!1sen!2sin!4v1763230887531!5m2!1sen!2sin"
+                      width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
                       className="rounded-xl"
                     />
                   </div>
-                  
+
                   <div className="mt-4 text-center">
                     <p className="text-gray-600 text-sm">
                       Visit us at our Collage home for Saraswati Puja celebrations
                     </p>
                   </div>
                 </div>
+
               </div>
+
             </div>
           </div>
         </section>
@@ -300,12 +305,12 @@ export default function Connect() {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <a href="/about">
-                <CustomButton variant="outline" size="lg">
+                <CustomButton variant="default" size="sm">
                   Our Story
                 </CustomButton>
               </a>
               <a href="/gallery">
-                <CustomButton variant="glow" size="lg">
+                <CustomButton variant="default" size="sm">
                   View Gallery
                 </CustomButton>
               </a>

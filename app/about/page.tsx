@@ -219,7 +219,7 @@ export default function About() {
                 </p>
 
                 <Link href="/gallery" className="inline-block">
-                  <CustomButton size="lg" className="w-full text-lg py-4">
+                  <CustomButton size="sm" className="w-full text-lg py-4">
                     View Gallery
                   </CustomButton>
                 </Link>
@@ -240,7 +240,7 @@ export default function About() {
                 </p>
 
                 <Link href="/connect" className="inline-block">
-                  <CustomButton variant="default" size="lg" className="">
+                  <CustomButton variant="default" size="sm" className="">
                     Get Involved
                   </CustomButton>
                 </Link>

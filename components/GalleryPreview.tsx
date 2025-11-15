@@ -67,12 +67,12 @@ export function GalleryPreview() {
                 onClick={() => openModal(idx)}
               >
                 <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-lg bg-gray-100">
-                  
-                  {/* Main Image */}
+
+                  {/* Main Image with grayscale */}
                   <img
                     src={item.src}
                     alt=""
-                    className="w-full h-80 object-cover group-hover:scale-110 transition-all duration-500"
+                    className="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
                   />
 
                   {/* Hover Zoom Icon */}
@@ -84,7 +84,7 @@ export function GalleryPreview() {
                     </div>
                   </div>
 
-                  {/* Glassmorphic Year Badge - No Border */}
+                  {/* Year Badge */}
                   <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-lg shadow-lg px-3 py-1.5 rounded-full">
                     <span className="text-white font-semibold text-sm drop-shadow-md">
                       {item.year}
@@ -114,7 +114,7 @@ export function GalleryPreview() {
             className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[999] p-4 cursor-pointer"
             onClick={closeModal}
           >
-            {/* Main Modal Container with max size constraints */}
+            {/* Modal container */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -122,39 +122,40 @@ export function GalleryPreview() {
               onClick={(e) => e.stopPropagation()}
               className="relative flex flex-col items-center max-w-4xl w-full cursor-default"
             >
-              {/* Image Container with max height and rounded corners */}
+              {/* Image Container */}
               <div className="relative w-full bg-black/50 rounded-2xl overflow-hidden border border-white/10">
-                {/* Main Image with constrained max size */}
+                
+                {/* Main Image with grayscale removed on hover */}
                 <img
                   src={galleryImages[currentImageIndex].src}
-                  className="w-full max-w-4xl max-h-[70vh] object-contain rounded-2xl mx-auto"
+                  className="w-full max-w-4xl max-h-[70vh] object-contain rounded-2xl mx-auto grayscale-[70%] hover:grayscale-0 transition-all duration-500"
                 />
 
                 {/* Close Button */}
                 <button
                   onClick={closeModal}
-                  className="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 transition-colors cursor-pointer"
+                  className="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 cursor-pointer"
                 >
                   <X className="w-5 h-5 text-white" />
                 </button>
 
-                {/* Previous Button */}
+                {/* Prev */}
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 transition-colors cursor-pointer"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 cursor-pointer"
                 >
                   <ChevronLeft className="w-5 h-5 text-white" />
                 </button>
 
-             
+                {/* Next */}
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 transition-colors cursor-pointer"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/80 cursor-pointer"
                 >
                   <ChevronRight className="w-5 h-5 text-white" />
                 </button>
 
-                {/* Glassmorphic Counter - No Border */}
+                {/* Counter */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-full">
                   <span className="text-white text-sm font-medium">
                     {currentImageIndex + 1} / {galleryImages.length}
@@ -162,24 +163,24 @@ export function GalleryPreview() {
                 </div>
               </div>
 
-              {/* Thumbnails Section */}
+              {/* Thumbnails */}
               <div className="flex gap-3 mt-6 justify-center flex-wrap">
                 {galleryImages.map((item, idx) => (
                   <motion.div
                     key={idx}
                     onClick={() => goToImage(idx)}
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     className={`cursor-pointer rounded-xl overflow-hidden border-2 transition-all duration-200
-                      ${currentImageIndex === idx 
-                        ? "border-white shadow-lg scale-105" 
-                        : "border-white/30 hover:border-white/60"
-                      }`}
+                      ${
+                        currentImageIndex === idx
+                          ? "border-white shadow-lg scale-105"
+                          : "border-white/30 hover:border-white/60"
+                      }
+                    `}
                   >
                     <img
                       src={item.src}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl"
-                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl grayscale-[70%] hover:grayscale-0 transition-all duration-500"
                     />
                   </motion.div>
                 ))}

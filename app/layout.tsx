@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { SocialBar } from "@/components/SocialBar"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -39,12 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <div className="bg-aura">
-          <div className="aura-beam-1"></div>
-          <div className="aura-beam-2"></div>
-          <div className="aura-beam-3"></div>
-        </div>
         {children}
+        <SocialBar />
         <Analytics />
       </body>
     </html>

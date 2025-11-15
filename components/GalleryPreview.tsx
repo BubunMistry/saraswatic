@@ -10,9 +10,9 @@ import { CustomButton } from "@/components/custom-button"
    GALLERY IMAGES WITH YEAR
 --------------------------*/
 const galleryImages = [
-  { src: "/images/2022/collage-saraswatipuja-2022 (4).webp", year: "2025" },
-  { src: "/images/2022/collage-saraswatipuja-2022 (5).webp", year: "2024" },
-  { src: "/images/2022/collage-saraswatipuja-2022.webp", year: "2023" },
+  { src: "/images/2024/collage-saraswatipuja-2024-pushpanjali.webp", year: "2024" },
+  { src: "/images/2023/main-2023.webp", year: "2023" },
+  { src: "/images/2022/collage-saraswatipuja-2022 (3).webp", year: "2022" },
 ]
 
 export function GalleryPreview() {

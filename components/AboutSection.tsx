@@ -106,7 +106,7 @@ export function AboutSection() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <img
-                    src="/images/2024/2020.jpg"
+                    src="/images/2021/2021-main.webp"
                     alt="Collage Puja"
                     className="w-full h-60 sm:h-72 md:h-80 object-cover"
                   />

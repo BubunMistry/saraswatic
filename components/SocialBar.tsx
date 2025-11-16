@@ -31,19 +31,23 @@ export function SocialBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       className="
-        fixed left-0 top-1/2 -translate-y-1/2
-        z-[999]
+        fixed left-0 z-[999]
 
-        px-3 py-5
+        /* Mobile: bottom-left */
+        bottom-6
+
+        /* Desktop: center-left */
+        md:top-1/2 md:-translate-y-1/2 md:bottom-auto
+
+        px-1 py-4
         rounded-r-3xl
 
-        /* EXACT NAVBAR BG */
         bg-black/30 
         backdrop-blur-xl 
         border-r border-white/10
         shadow-lg
 
-        flex flex-col gap-4
+        flex flex-col gap-3
       "
     >
       {socialItems.map((item, idx) => {
@@ -55,29 +59,26 @@ export function SocialBar() {
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.15, x: 6 }}
-            transition={{ type: "spring", stiffness: 250 }}
+            transition={{ type: "spring", stiffness: 260 }}
             style={{ "--hover-bg": item.hoverBg } as any}
             className="
-              /* ICON SIZE — small on mobile */
-              w-8 h-8 sm:w-10 sm:h-10
+              cursor-pointer
+              rounded-full
+              border border-white/10
+              backdrop-blur-xl
+              bg-white/10
+              transition-all duration-300
+
+              /* Icon size small on mobile, normal on desktop */
+              w-8 h-8 md:w-10 md:h-10
 
               flex items-center justify-center
-              rounded-full
-
-              cursor-pointer
-
-              /* Circle background (same style as navbar buttons) */
-              bg-white/10
-              backdrop-blur-xl
-              border border-white/10
-
-              transition-all duration-300
               hover:bg-[var(--hover-bg)]
             "
           >
             <Icon
               size={16}
-              className="text-white sm:text-white transition-all duration-300"
+              className="md:size-5 text-white transition-all duration-300"
             />
           </motion.a>
         )

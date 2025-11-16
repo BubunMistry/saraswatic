@@ -5,62 +5,13 @@ export interface GalleryItem {
   year: number
   title: string
   media: string
+  thumbnail?: string
   type: 'image' | 'video'
   description: string
 }
 
 export const galleryData: GalleryItem[] = [
-  // 2026 Media
-  { 
-    id: 1, 
-    year: 2026, 
-    title: "Morning Ceremony", 
-    media: "/images/2026/collage-saraswatipuja-2026-1.webp", 
-    type: 'image',
-    description: "Beautiful morning rituals and prayers"
-  },
-  { 
-    id: 2, 
-    year: 2026, 
-    title: "Cultural Highlights", 
-    media: "/videos/2026/collage-saraswatipuja-2026-highlights.mp4", 
-    type: 'video',
-    description: "Complete celebration highlights and performances"
-  },
-  { 
-    id: 3, 
-    year: 2026, 
-    title: "Prayer Session", 
-    media: "/images/2026/collage-saraswatipuja-2026-2.webp", 
-    type: 'image',
-    description: "Devotees engaged in traditional prayers"
-  },
-
-  // 2025 Media
-  { 
-    id: 4, 
-    year: 2025, 
-    title: "Worship Ceremony", 
-    media: "/images/2025/collage-saraswatipuja-2025-1.webp", 
-    type: 'image',
-    description: "Traditional worship ceremony moments"
-  },
-  { 
-    id: 5, 
-    year: 2025, 
-    title: "Festival Celebration", 
-    media: "/videos/2025/collage-saraswatipuja-2025-celebration.mp4", 
-    type: 'video',
-    description: "Full festival celebration and cultural events"
-  },
-  { 
-    id: 6, 
-    year: 2025, 
-    title: "Music Performance", 
-    media: "/images/2025/collage-saraswatipuja-2025-3.webp", 
-    type: 'image',
-    description: "Traditional music and dance performances"
-  },
+ 
 
   // 2024 Media
   { 
@@ -96,6 +47,7 @@ export const galleryData: GalleryItem[] = [
     title: "Kids Talent Show", 
     media: "/videos/2024/collage-saraswatipuja-2024.mp4", 
     type: 'video',
+    thumbnail:"/images/2024/collage-saraswatipuja-2024-pushpanjali.webp",
     description: "Kids performing songs and recitations on stage"
   },
   
@@ -319,4 +271,4 @@ export const galleryData: GalleryItem[] = [
   },
 ]
 
-export const years = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
+export const years = [ 2024, 2023, 2022, 2021, 2020, 2019]

@@ -68,7 +68,7 @@ export function GalleryPreview() {
               >
                 <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-lg bg-gray-100">
 
-                  {/* Main Image with grayscale */}
+                  {/* Main Image - FULL black & white by default, color on hover */}
                   <img
                     src={item.src}
                     alt=""
@@ -125,10 +125,10 @@ export function GalleryPreview() {
               {/* Image Container */}
               <div className="relative w-full bg-black/50 rounded-2xl overflow-hidden border border-white/10">
                 
-                {/* Main Image with grayscale removed on hover */}
+                {/* Main Image - FULL COLOR in modal (no grayscale) */}
                 <img
                   src={galleryImages[currentImageIndex].src}
-                  className="w-full max-w-4xl max-h-[70vh] object-contain rounded-2xl mx-auto grayscale-[70%] hover:grayscale-0 transition-all duration-500"
+                  className="w-full max-w-4xl max-h-[70vh] object-contain rounded-2xl mx-auto"
                 />
 
                 {/* Close Button */}
@@ -163,7 +163,7 @@ export function GalleryPreview() {
                 </div>
               </div>
 
-              {/* Thumbnails */}
+              {/* Thumbnails - FULL COLOR in modal */}
               <div className="flex gap-3 mt-6 justify-center flex-wrap">
                 {galleryImages.map((item, idx) => (
                   <motion.div
@@ -180,7 +180,7 @@ export function GalleryPreview() {
                   >
                     <img
                       src={item.src}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl grayscale-[70%] hover:grayscale-0 transition-all duration-500"
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl"
                     />
                   </motion.div>
                 ))}

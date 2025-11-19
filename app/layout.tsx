@@ -12,21 +12,18 @@ export const metadata: Metadata = {
   title: "Saraswati Puja - College Celebration",
   description:
     "Join us for the Saraswati Puja celebration at our college. Celebrate the goddess of knowledge, music, and arts.",
-  generator: "v0.app",
+  
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/favicon-32x32.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/favicon-32x32.png",
         media: "(prefers-color-scheme: dark)",
       },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
+  
     ],
     apple: "/apple-icon.png",
   },

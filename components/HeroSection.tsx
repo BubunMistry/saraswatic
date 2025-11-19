@@ -16,7 +16,7 @@ export function HeroSection() {
           muted
           loop
           playsInline
-          src="https://videos.pexels.com/video-files/32390680/13816718_1920_1080_60fps.mp4"
+          src="/videos/main/main-banner.mp4"
         />
       </div>
 
@@ -53,7 +53,6 @@ export function HeroSection() {
           Join us in this divine celebration of wisdom and creativity.
         </p>
 
-        {/* CTA Buttons */}
         <div className="flex gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 flex-wrap">
           <Link href="/gallery">
             <CustomButton size="sm" className="text-[0.9rem] sm:text-[1.1rem]">

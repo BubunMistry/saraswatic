@@ -7,7 +7,6 @@ import { ModalGallery } from "@/components/modal-gallery"
 import {
   Calendar,
   Image as ImageIcon,
-  Filter,
   ChevronDown,
   Play,
   Video,
@@ -19,7 +18,7 @@ import { galleryData, years } from "@/lib/gallery-data"
 type MediaType = "all" | "image" | "video"
 
 export default function Gallery() {
-  const [selectedYear, setSelectedYear] = useState<number | null>(null)
+  const [selectedYear, setSelectedYear] = useState<number | null>(years[0] || null)
   const [selectedMediaType, setSelectedMediaType] = useState<MediaType>("all")
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0)
@@ -50,8 +49,6 @@ export default function Gallery() {
     setCurrentMediaIndex(index)
   }
 
-  const isAllYears = selectedYear === null
-
   return (
     <div className="flex flex-col min-h-screen bg-white text-black">
       <Navigation />
@@ -75,154 +72,134 @@ export default function Gallery() {
         {/* Content */}
         <section className="py-16 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
-            {/* Filter and Sort Header - Aligned */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 gap-4">
+            {/* Filter and Sort Header - Responsive */}
+            <div className="flex flex-col min-[300px]:flex-row min-[300px]:items-center min-[300px]:justify-center lg:justify-between mb-8 gap-4">
               {/* Left Side - Year Selection */}
-              <div className="flex items-center gap-4">
-                {/* Desktop - Year Tabs */}
-                <div className="hidden lg:flex items-center gap-2">
-                  <div className="flex items-center gap-2 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl p-1">
-                    <button
-                      onClick={() => setSelectedYear(null)}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
-                        selectedYear === null
-                          ? "bg-black text-white shadow-sm"
-                          : "text-gray-700 hover:text-black"
-                      }`}
-                    >
-                      All Years
-                    </button>
-                    {years.map((year) => (
-                      <button
-                        key={year}
-                        onClick={() => setSelectedYear(year)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
-                          selectedYear === year
-                            ? "bg-black text-white shadow-sm"
-                            : "text-gray-700 hover:text-black"
-                        }`}
-                      >
-                        {year}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mobile - Year Dropdown */}
-                <div className="lg:hidden relative">
-                  <button
-                    onClick={() => setShowYearFilter(!showYearFilter)}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl text-white transition-colors cursor-pointer"
-                  >
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-sm font-medium text-black">
-                      {selectedYear ? `Year: ${selectedYear}` : "All Years"}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-black transition-transform ${showYearFilter ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {/* Year Dropdown */}
-                  {showYearFilter && (
-                    <div className="absolute top-full left-0 mt-1 w-48 bg-black/80 backdrop-blur-md border border-white/20 rounded-xl shadow-lg z-10">
-                      <button
-                        onClick={() => {
-                          setSelectedYear(null)
-                          setShowYearFilter(false)
-                        }}
-                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/10 cursor-pointer text-white ${
-                          selectedYear === null ? "bg-white/20 font-medium" : ""
-                        } rounded-t-xl`}
-                      >
-                        All Years
-                      </button>
-                      {years.map((year, index) => (
+              <div className="flex justify-center min-[300px]:justify-start lg:justify-start">
+                <div className="relative">
+                  {/* Desktop - Year Tabs */}
+                  <div className="hidden lg:flex items-center gap-2">
+                    <div className="flex items-center gap-2 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl p-1">
+                      {years.map((year) => (
                         <button
                           key={year}
-                          onClick={() => {
-                            setSelectedYear(year)
-                            setShowYearFilter(false)
-                          }}
-                          className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/10 cursor-pointer text-white ${
-                            selectedYear === year ? "bg-white/20 font-medium" : ""
-                          } ${index === years.length - 1 ? "rounded-b-xl" : ""}`}
+                          onClick={() => setSelectedYear(year)}
+                          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
+                            selectedYear === year
+                              ? "bg-black text-white shadow-sm"
+                              : "text-gray-700 hover:text-black"
+                          }`}
                         >
                           {year}
                         </button>
                       ))}
                     </div>
-                  )}
+                  </div>
+
+                  {/* Mobile - Year Dropdown */}
+                  <div className="lg:hidden relative">
+                    <button
+                      onClick={() => {
+                        setShowYearFilter(!showYearFilter)
+                        setShowSortFilter(false)
+                      }}
+                      className="flex items-center gap-2 px-4 py-2.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl text-black transition-colors cursor-pointer"
+                    >
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-sm font-medium">
+                        {selectedYear ? `Year: ${selectedYear}` : "Select Year"}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${showYearFilter ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {/* Year Dropdown */}
+                    {showYearFilter && (
+                      <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-20">
+                        {years.map((year, index) => (
+                          <button
+                            key={year}
+                            onClick={() => {
+                              setSelectedYear(year)
+                              setShowYearFilter(false)
+                            }}
+                            className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 cursor-pointer text-black ${
+                              selectedYear === year ? "bg-gray-100 font-medium" : ""
+                            } ${index === 0 ? "rounded-t-xl" : ""} ${
+                              index === years.length - 1 ? "rounded-b-xl" : ""
+                            }`}
+                          >
+                            {year}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
               {/* Right Side - Sort Filter */}
-              <div className="relative">
-                <button
-                  onClick={() => setShowSortFilter(!showSortFilter)}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl text-white transition-colors cursor-pointer"
-                >
-                  <SortAsc className="w-4 h-4 text-black" />
-                  <span className="text-sm font-medium text-black">
-                    {selectedMediaType === "all" && "All Media"}
-                    {selectedMediaType === "image" && "Photos Only"}
-                    {selectedMediaType === "video" && "Videos Only"}
-                  </span>
-                  <ChevronDown className={`w-4 h-4 text-black transition-transform ${showSortFilter ? "rotate-180" : ""}`} />
-                </button>
+              <div className="flex justify-center min-[300px]:justify-end lg:justify-end">
+                <div className="relative">
+                  <button
+                    onClick={() => {
+                      setShowSortFilter(!showSortFilter)
+                      setShowYearFilter(false)
+                    }}
+                    className="flex items-center gap-2 px-4 py-2.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-xl text-black transition-colors cursor-pointer"
+                  >
+                    <SortAsc className="w-4 h-4" />
+                    <span className="text-sm font-medium">
+                      {selectedMediaType === "all" && "All Media"}
+                      {selectedMediaType === "image" && "Photos Only"}
+                      {selectedMediaType === "video" && "Videos Only"}
+                    </span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${showSortFilter ? "rotate-180" : ""}`} />
+                  </button>
 
-                {/* Sort Dropdown */}
-                {showSortFilter && (
-                  <div className="absolute top-full right-0 mt-1 w-48 bg-black/80 backdrop-blur-md border border-white/20 rounded-xl shadow-lg z-10">
-                    <button
-                      onClick={() => {
-                        setSelectedMediaType("all")
-                        setShowSortFilter(false)
-                      }}
-                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/10 cursor-pointer flex items-center gap-3 text-white ${
-                        selectedMediaType === "all" ? "bg-white/20 font-medium" : ""
-                      } rounded-t-xl`}
-                    >
-                      <Film className="w-4 h-4" />
-                      All Media
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSelectedMediaType("image")
-                        setShowSortFilter(false)
-                      }}
-                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/10 cursor-pointer flex items-center gap-3 text-white ${
-                        selectedMediaType === "image" ? "bg-white/20 font-medium" : ""
-                      }`}
-                    >
-                      <ImageIcon className="w-4 h-4" />
-                      Photos Only
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSelectedMediaType("video")
-                        setShowSortFilter(false)
-                      }}
-                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/10 cursor-pointer flex items-center gap-3 text-white ${
-                        selectedMediaType === "video" ? "bg-white/20 font-medium" : ""
-                      } rounded-b-xl`}
-                    >
-                      <Video className="w-4 h-4" />
-                      Videos Only
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Year Badge - Only show when All Years is selected */}
-            {isAllYears && (
-              <div className="mb-6">
-                <div className="inline-flex items-center gap-2 bg-black/5 backdrop-blur-sm border border-black/10 px-3 py-1.5 rounded-xl text-sm text-black">
-                  <Calendar className="w-4 h-4" />
-                  <span className="font-medium">All Years</span>
+                  {/* Sort Dropdown */}
+                  {showSortFilter && (
+                    <div className="absolute top-full right-0 mt-1 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-20">
+                      <button
+                        onClick={() => {
+                          setSelectedMediaType("all")
+                          setShowSortFilter(false)
+                        }}
+                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 cursor-pointer flex items-center gap-3 text-black ${
+                          selectedMediaType === "all" ? "bg-gray-100 font-medium" : ""
+                        } rounded-t-xl`}
+                      >
+                        <Film className="w-4 h-4" />
+                        All Media
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedMediaType("image")
+                          setShowSortFilter(false)
+                        }}
+                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 cursor-pointer flex items-center gap-3 text-black ${
+                          selectedMediaType === "image" ? "bg-gray-100 font-medium" : ""
+                        }`}
+                      >
+                        <ImageIcon className="w-4 h-4" />
+                        Photos Only
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedMediaType("video")
+                          setShowSortFilter(false)
+                        }}
+                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 cursor-pointer flex items-center gap-3 text-black ${
+                          selectedMediaType === "video" ? "bg-gray-100 font-medium" : ""
+                        } rounded-b-xl`}
+                      >
+                        <Video className="w-4 h-4" />
+                        Videos Only
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
-            )}
-
+            </div>
             {/* Gallery Grid - Responsive */}
             <div className="grid grid-cols-1 min-[300px]:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredGallery.length ? (
@@ -273,12 +250,10 @@ export default function Gallery() {
                         </>
                       )}
 
-                      {/* Year badge inside image - Only show when All Years is selected */}
-                      {isAllYears && (
-                        <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-medium text-white cursor-pointer">
-                          {item.year}
-                        </div>
-                      )}
+                      {/* Year badge inside image */}
+                      <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-medium text-white cursor-pointer">
+                        {item.year}
+                      </div>
                     </div>
 
                     {/* Hidden content for accessibility */}

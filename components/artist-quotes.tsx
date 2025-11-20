@@ -91,7 +91,7 @@ const artists: ArtistData[] = [
     name: "Swami Vivekananda",
     designation: "Spiritual Leader",
     image: "/images/artist/Swami Vivekananda.webp",
-    text: "Arise, awake, and stop not until the goal is reached.",
+    text: "Work is Worthy.",
     era: "1863-1902",
     field: "Spirituality",
     icon: "quote"

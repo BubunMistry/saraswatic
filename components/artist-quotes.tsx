@@ -118,7 +118,6 @@ const artists: ArtistData[] = [
   }
 ]
 
-
 const iconMap = {
   quote: Quote,
   music: Music,
@@ -147,14 +146,14 @@ export function ArtistQuotes() {
   }
 
   return (
-    <section className=" bg-white pb-10 relative overflow-hidden">
-      <div className="container h-full px-4 sm:px-6 lg:px-8 mx-auto ">
+    <section className="bg-white pb-10 relative overflow-hidden">
+      <div className="container h-full px-4 sm:px-6 lg:px-8 mx-auto">
 
-        {/* Compact Header */}
+        {/* Compact Header - Centered for all screens */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-6"
+          className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             Legacy of{" "}
@@ -169,17 +168,17 @@ export function ArtistQuotes() {
 
         {/* Main Content */}
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 h-full">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 h-full items-center">
 
-            {/* Left Side - Square Image */}
+            {/* Left Side - Square Image - Centered on mobile */}
             <motion.div
-              className="relative w-full flex flex-col"
+              className="relative w-full flex flex-col items-center lg:items-start"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
               <div 
-                className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-lg"
+                className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-lg mx-auto lg:mx-0"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -207,11 +206,11 @@ export function ArtistQuotes() {
                 </div>
               </div>
 
-              {/* Small Images - Bottom of main image on mobile */}
+              {/* Thumbnails - Only show on mobile below image */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex -space-x-3 mt-6 justify-start lg:hidden w-full"
+                className="flex lg:hidden justify-center -space-x-3 mt-6 w-full"
               >
                 {artists.map((artist, index) => {
                   const Icon = iconMap[artist.icon]
@@ -236,11 +235,6 @@ export function ArtistQuotes() {
                           alt={artist.name}
                           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
                         />
-
-                        {/* Tiny Glassmorphic Icon */}
-                        <div className="absolute bottom-0 right-0 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-glass">
-                          <Icon className="w-2 h-2 text-gray-700" />
-                        </div>
                       </div>
                     </motion.div>
                   )
@@ -248,66 +242,66 @@ export function ArtistQuotes() {
               </motion.div>
             </motion.div>
 
-            {/* Right Side - Quote Section */}
-            <div className="w-full flex flex-col justify-center">
+            {/* Right Side - Quote Section - Centered on mobile */}
+            <div className="w-full flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
               <motion.div
                 key={currentArtist}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="space-y-6 w-full"
+                className="space-y-6 w-full max-w-lg mx-auto lg:mx-0"
               >
-                {/* Quote with Icon */}
-                <div className="flex items-start gap-4 text-start">
-                  <div className="p-3 bg-gray-900 rounded-xl shadow-lg mt-1 flex-shrink-0">
+                {/* Quote with Icon - Centered on mobile */}
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-start">
+                  <div className="p-3 bg-gray-900 rounded-xl shadow-lg flex-shrink-0 order-2 sm:order-1">
                     <Quote className="w-5 h-5 text-white" />
                   </div>
-                  <blockquote className="text-xl md:text-2xl font-light text-gray-800 leading-relaxed italic flex-1 text-start">
+                  <blockquote className="text-xl md:text-2xl font-light text-gray-800 leading-relaxed italic flex-1 order-1 sm:order-2">
                     "{artists[currentArtist].text}"
                   </blockquote>
                 </div>
 
-                {/* Author Info */}
-                <div className="pt-4 border-t border-gray-300 text-start">
+                {/* Author Info - Centered on mobile */}
+                <div className="pt-4 border-t border-gray-300 text-center sm:text-start">
                   <p className="text-lg font-bold text-black mb-1">{artists[currentArtist].name}</p>
                   <p className="text-gray-700 text-sm mb-1">{artists[currentArtist].designation}</p>
                   <p className="text-gray-500 text-xs">{artists[currentArtist].field}</p>
                 </div>
-              </motion.div>
 
-              {/* Small Images - Right side on desktop */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="hidden lg:flex -space-x-3 mt-8 justify-start w-full"
-              >
-                {artists.map((artist, index) => {
-                  const Icon = iconMap[artist.icon]
-                  const isActive = index === currentArtist
+                {/* Thumbnails - Only show on desktop below quotes */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="hidden lg:flex justify-start -space-x-3 mt-6 w-full"
+                >
+                  {artists.map((artist, index) => {
+                    const Icon = iconMap[artist.icon]
+                    const isActive = index === currentArtist
 
-                  return (
-                    <motion.div
-                      key={artist.id}
-                      className={`relative cursor-pointer transition-all duration-300 ${isActive ? 'scale-110 z-20 -translate-y-2' : 'scale-100 z-10'
-                        }`}
-                      whileHover={{
-                        scale: 1.15,
-                        zIndex: 30
-                      }}
-                      onClick={() => goToArtist(index)}
-                    >
-                      {/* Circular Avatar with Glassmorphic Shadow */}
-                      <div className={`relative w-10 h-10 rounded-full overflow-hidden ${isActive ? 'shadow-lg' : 'shadow-glass'
-                        } transition-all duration-300`}>
-                        <img
-                          src={artist.image}
-                          alt={artist.name}
-                          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    </motion.div>
-                  )
-                })}
+                    return (
+                      <motion.div
+                        key={artist.id}
+                        className={`relative cursor-pointer transition-all duration-300 ${isActive ? 'scale-110 z-20 -translate-y-2' : 'scale-100 z-10'
+                          }`}
+                        whileHover={{
+                          scale: 1.15,
+                          zIndex: 30
+                        }}
+                        onClick={() => goToArtist(index)}
+                      >
+                        {/* Circular Avatar with Glassmorphic Shadow */}
+                        <div className={`relative w-10 h-10 rounded-full overflow-hidden ${isActive ? 'shadow-lg' : 'shadow-glass'
+                          } transition-all duration-300`}>
+                          <img
+                            src={artist.image}
+                            alt={artist.name}
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                          />
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
               </motion.div>
             </div>
           </div>

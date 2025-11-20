@@ -71,7 +71,7 @@ export default function About() {
               <div className="relative">
                 <div className="rounded-3xl overflow-hidden border-2 border-gray-100 shadow-2xl bg-white">
                   <img
-                    src="/images/about/tamal-adak-profile.jpg"
+                    src="/images/about/collage-family.webp"
                     alt="Tamal Adak organizing Saraswati Puja"
                     className="w-full h-96 object-cover"
                   />
@@ -159,7 +159,7 @@ export default function About() {
                 <div className="relative">
                   <div className="w-56 h-56 rounded-3xl overflow-hidden border-4 border-gray-100 shadow-2xl">
                     <img
-                      src="/images/about/tamal-adak-profile.jpg"
+                      src="/images/about/tamal-adak-profile.webp"
                       alt="Tamal Adak - Main Host"
                       className="w-full h-full object-cover"
                     />

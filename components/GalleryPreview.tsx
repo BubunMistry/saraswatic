@@ -37,14 +37,14 @@ export function GalleryPreview() {
   return (
     <>
       {/* ---------- GALLERY SECTION ---------- */}
-      <section className="py-24 px-4 bg-white">
+      <section className="md:py-24 py-5 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="text-center md:mb-16 mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-black">Gallery Highlights</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-4">
@@ -57,7 +57,7 @@ export function GalleryPreview() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            className="grid sm:grid-cols-3 grid-cols-2 gap-8 mb-16"
           >
             {galleryImages.map((item, idx) => (
               <motion.div

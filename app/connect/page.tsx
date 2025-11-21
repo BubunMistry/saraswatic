@@ -36,20 +36,58 @@ export default function Connect() {
       <Navigation />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-gray-900 to-black">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                <Mail className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Connect With Us</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Have questions about our Saraswati Puja celebrations? We'd love to hear from you!
-            </p>
-          </div>
-        </section>
+    {/* Hero Section */}
+<section className="relative px-6 text-center text-white overflow-hidden
+  bg-gradient-to-br from-gray-900 to-black 
+  pt-28 md:pt-32 lg:pt-36 xl:pt-40 
+  pb-16 md:pb-20 lg:pb-24 
+  min-h-[50vh] flex flex-col justify-center">
+
+  {/* Top-right Alpona */}
+  <img
+    src="/images/assets/alpona-right.png"
+    alt="Alpona Decorative"
+    className="absolute 
+      top-16 right-4 sm:top-20 sm:right-8
+      w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32
+      opacity-80 object-contain pointer-events-none"
+  />
+
+  {/* Bottom-left Alpona */}
+  <img
+    src="/images/assets/alpona-left.png"
+    alt="Alpona Decorative"
+    className="absolute 
+      bottom-6 left-4 sm:bottom-10 sm:left-6
+      md:bottom-12 md:left-10 lg:bottom-14 lg:left-14
+      w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32
+      opacity-80 object-contain pointer-events-none"
+  />
+
+  <div className="max-w-5xl mx-auto px-4">
+
+    {/* Main Top Image */}
+    <div className="flex justify-center mb-4 sm:mb-6">
+      <img
+        src="/images/assets/main.png"
+        alt="Contact Illustration"
+        className="w-32 sm:w-48 md:w-64 lg:w-72 xl:w-80 object-contain mx-auto"
+      />
+    </div>
+
+    {/* Heading */}
+    <h1 className="text-3xl sm:text-4xl xl:text-6xl 
+                   font-bold mb-3 leading-tight tracking-wide">
+      Connect With Us
+    </h1>
+
+    {/* Sub Text */}
+    <p className="text-xs sm:text-base xl:text-lg 
+                 text-gray-300 leading-relaxed max-w-xl mx-auto">
+      Have questions about our Saraswati Puja celebrations? <br /> We'd love to hear from you!
+    </p>
+  </div>
+</section>
 
         {/* Main Content */}
         <section className="py-16 px-4 bg-white">

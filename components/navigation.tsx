@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Home, Info, ImageIcon, Mail, Menu, X } from "lucide-react"
+import { Home, Info, ImageIcon, Mail, Menu, X, Camera } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,9 +13,11 @@ export function Navigation() {
     { href: "/", label: "Home", icon: Home },
     { href: "/about", label: "About", icon: Info },
     { href: "/gallery", label: "Gallery", icon: ImageIcon },
+    { href: "/photography", label: "My Photography", icon: Camera},
     { href: "/connect", label: "Connect", icon: Mail },
-  ]
-
+    
+  ];
+  
   // Detect scrolling
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)

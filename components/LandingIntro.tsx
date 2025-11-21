@@ -139,7 +139,7 @@ export default function LandingIntro({ onFinish }: LandingIntroProps) {
 
       {/* Floating Unhome Button */}
       <button
-        onClick={() => new Audio("/images/assets/intro.wav").play()}
+        onClick={() => new Audio("/images/assets/intro.mp3").play()}
         className="absolute z-20 px-6 py-2 text-lg rounded-full border border-white/40 bg-white/10 text-white backdrop-blur-sm cursor-pointer hover:border-red-500 hover:text-red-500"
         style={{ left: `${buttonPos.x}%`, top: `${buttonPos.y}%`, transform: "translate(-50%, -50%)" }}
       >

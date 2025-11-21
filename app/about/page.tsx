@@ -45,22 +45,63 @@ export default function About() {
       <Navigation />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="pt-32 pb-24 px-6 bg-gradient-to-br from-gray-900 to-black text-center text-white">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="p-5 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 shadow-2xl">
-                <BookOpen className="w-10 h-10 text-white" />
-              </div>
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              About Saraswati Puja
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Celebrating 13 years of divine knowledge, music, and arts at our College family tradition
-            </p>
-          </div>
-        </section>
+       
+{/* Hero Section */}
+<section className="relative px-6 text-center text-white overflow-hidden
+  bg-gradient-to-br from-gray-900 to-black 
+  pt-28 md:pt-32 lg:pt-36 xl:pt-40 
+  pb-16 md:pb-20 lg:pb-24 
+  min-h-[50vh] flex flex-col justify-center">
+
+  {/* Top-right Alpona */}
+  <img
+    src="/images/assets/alpona-right.png"
+    alt="Alpona Decorative"
+    className="absolute 
+      top-16 right-4          
+      sm:top-20 sm:right-8 
+     
+      
+    
+      w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32
+      opacity-80 object-contain pointer-events-none"
+  />
+
+  {/* Bottom-left Alpona */}
+  <img
+    src="/images/assets/alpona-left.png"
+    alt="Alpona Decorative"
+    className="absolute 
+      bottom-6 left-4 sm:bottom-10 sm:left-6
+      md:bottom-12 md:left-10 lg:bottom-14 lg:left-14
+      w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32
+      opacity-80 object-contain pointer-events-none"
+  />
+
+  <div className="max-w-5xl mx-auto px-4">
+
+    {/* Main Top Image */}
+    <div className="flex justify-center mb-4 sm:mb-6">
+      <img
+        src="/images/assets/main.png"
+        alt="Main Saraswati Illustration"
+        className="w-32 sm:w-48 md:w-64 lg:w-72 xl:w-80 object-contain mx-auto"
+      />
+    </div>
+
+    {/* Heading */}
+    <h1 className="text-3xl sm:text-4xl xl:text-6xl 
+                   font-bold mb-3 leading-tight tracking-wide">
+      About Saraswati Puja
+    </h1>
+
+    {/* Sub Text */}
+    <p className="text-xs sm:text-base xl:text-lg 
+                 text-gray-300 leading-relaxed max-w-xl mx-auto">
+      Celebrating 13 years of divine knowledge, <br></br>  music, and arts at our College family tradition
+    </p>
+  </div>
+</section>
 
         {/* Story Section */}
         <section className="pt-20 px-6">
